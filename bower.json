@@ -1,0 +1,24 @@
+{
+  "name": "php-upload-sandbox",
+  "version": "0.0.0",
+  "authors": [
+    "Dmytro Sokil <dmytro.sokil@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "upload.js": "*",
+    "jquery": "2.1.3"
+  }
+}

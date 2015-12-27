@@ -1,0 +1,7 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/sokil/upload.js
+
+[submodule "backend"]
+	path = backend
+	url = https://github.com/sokil/php-upload

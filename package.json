@@ -1,0 +1,14 @@
+{
+    "name": "php-upload-sandbox",
+    "version": "0.0.1",
+    "description": "php-upload-sandbox",
+    "main": "Gruntfile.js",
+    "author": "Dmytro Sokil <dmytro.sokil@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+    },
+    "dependencies": {
+        "grunt-contrib-copy": "0.*",
+        "grunt-contrib-watch": "0.6.1"
+    }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/upload.js?{{ "now"|date('U') }}"></script>
+        <style type="text/css">
+            .text-block {
+                border: 1px solid #cdcdcd;
+                margin: 10px 0;
+                padding: 0;
+                border-radius: 4px;
+            }
+
+            .text-block-title {
+                padding: 3px;
+                color: white;
+                background: #cdcdcd;
+            }
+
+            .text-block-content {
+                padding: 20px;
+            }
+
+            .json {
+                font-size: 10px;
+                color: #777777;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <input type="file" multiple="multiple" />
+        </form>
+
+        <div style="padding: 10px 0;">
+            Transport:
+            <input type="radio" name="transport" value="xhr" checked="checked">Xhr</input>
+            <input type="radio" name="transport" value="iframe">Iframe</input>
+        </div>
+
+        <div id="progress" class="text-block">
+            <div class="text-block-title">Progress</div>
+            <div class="text-block-content"></div>
+        </div>
+
+        <div id="events" class="text-block">
+            <div class="text-block-title">Events</div>
+            <div class="text-block-content"></div>
+        </div>
+
+        <script type="text/javascript">
+            // transport chooser
+            $('input[name="transport"]').change(function(e) {
+                $('form input[type="file"]').upload('setTransport', this.value);
+            });
+
+            // upload form fandler
+            $('form input[type="file"]').upload({
+                uploadUrl: '/upload',
+                multiple: true,
+                onchoose: function() {
+                    $('#progress .text-block-content').empty();
+                    $('#events .text-block-content').empty();
+
+                    $('#events .text-block-content').append('onchoose<br>');
+                },
+                oninvalidfile: function(code) {
+                    $('#events .text-block-content').append('oninvalidfile: ' + code + '<br>');
+                },
+                onsuccess: function(response) {
+                    $('#events .text-block-content').append('onsuccess:<br><pre class="json">' + JSON.stringify(response, null, ' ') + '</pre><br>');
+                },
+                onerror: function(message) {
+                    $('#events .text-block-content').append('onerror: ' + message + '<br>');
+                },
+                onbeforeupload: function() {
+                    $('#events .text-block-content').append('onbeforeupload<br>');
+                },
+                onafterupload: function() {
+                    $('#events .text-block-content').append('onafterupload<br>');
+                },
+                onprogress: function(loaded, total) {
+                    $('#progress .text-block-content').append('loaded: ' + loaded + ', total: ' + total + '<br>');
+                }
+            });
+        </script>
+    </body>
+</html>
