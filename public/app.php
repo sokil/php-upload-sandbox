@@ -27,7 +27,7 @@ $app->post('upload', function() use($app) {
     $uploader = new \Sokil\Upload\Handler();
 
     try {
-        $uploader->upload(__DIR__ . '/uploads/');
+        $uploader->moveLocal(__DIR__ . '/uploads/');
     } catch (\Exception $e) {
         return $app->json([
             'server' => $_SERVER,
