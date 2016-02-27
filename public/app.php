@@ -37,7 +37,6 @@ $app->post('upload', function() use($app) {
 
     return $app->json([
         'transport' => $uploader->getTransportName(),
-        'result'    => $uploader->getLastUploadResult(),
         'server'    => $_SERVER,
         'get'       => $_GET,
         'post'      => $_POST,
